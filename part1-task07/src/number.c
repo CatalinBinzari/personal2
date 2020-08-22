@@ -1,6 +1,6 @@
 
 /*****************************************************************************/
-/* Name:   time.c                                                            */
+/* Name:   number.c                                                            */
 /*                                                                           */
 /* Purpose:  Determines whether the number is positive, negative or zero 
              with if statement and switch statement                          */
