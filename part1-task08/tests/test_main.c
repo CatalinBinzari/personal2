@@ -2,8 +2,7 @@
 /*
   Name:        test_main.c
 
-  Purpose:     This file contains tests for whether the number is positive, negative or zero 
-             with if statement and switch statement
+  Purpose:     This file contains tests for converting a number to day 
 */
 
 #include <stdarg.h>
@@ -14,7 +13,8 @@
 #include <cmocka.h>
 
 #include "../src/number.h"
-void number_state_with_if_stmt_valid_negative(void **state);
+void number_to_day_valid(void **state);
+void number_to_day_invalid(void **state);
 
 /*****************************************************************************/
 /*                                                                           */
@@ -23,7 +23,8 @@ void number_state_with_if_stmt_valid_negative(void **state);
 int main()
 {
   const struct CMUnitTest tests[] = {
-      cmocka_unit_test(number_state_with_if_stmt_valid_negative),
+      cmocka_unit_test(number_to_day_valid),
+      cmocka_unit_test(number_to_day_invalid),
 
   };
 
@@ -31,18 +32,35 @@ int main()
 }
 
 /*
-  Name:        number_state_with_if_stmt_valid_negative
+  Name:        number_to_day_valid
 
-  Purpose:     Test that number_state_with_if_stmt works with negative values. 
+  Purpose:     Test that number_to_day working correctly with a valid value
 
   Params:      IN    state
               
   Returns:     Nothing
 
 */
-void number_state_with_if_stmt_valid_negative(void **state)
+void number_to_day_valid(void **state)
 {
-  int fstate = number_state_with_if_stmt(-5);
+  const char *name = number_to_day(3);
 
-  assert_int_equal(fstate, -1);
-} /* number_state_with_if_stmt_valid_negative */
+  assert_string_equal("Wednesday", name);
+} /* number_to_day_valid */
+
+/*
+  Name:        number_to_day_invalid
+
+  Purpose:     Test that number_to_day working correctly with a invalid value
+
+  Params:      IN    state
+              
+  Returns:     Nothing
+
+*/
+void number_to_day_invalid(void **state)
+{
+  const char *name = number_to_day(343);
+
+  assert_string_equal("Not a week day", name);
+} /* number_to_day_invalid */

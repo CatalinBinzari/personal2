@@ -11,6 +11,8 @@
 #define TRUE 1
 #define FALSE 0
 
-int number_to_day(int day_number);
+#include "week_enum.h"
+
+const char *number_to_day(int day_number);
 
 #endif /* NUMBER_H */
